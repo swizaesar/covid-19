@@ -1,5 +1,6 @@
 import React from "react";
-import Maps from "./Maps";
+import Maps from "../Maps";
+import Style from "./index.style";
 import {
     FormGroup,
     Label,
@@ -9,7 +10,6 @@ import {
     Row,
     Col,
 } from "reactstrap";
-import { FormStyle } from "../index.style";
 
 const FormMap = ({
     latitude = false,
@@ -21,7 +21,7 @@ const FormMap = ({
     onGetValue = () => {},
 }) => {
     return (
-        <FormStyle>
+        <Style>
             <Label>{label}</Label>
             <Maps
                 location={{ lat: longitude, lng: latitude }}
@@ -79,7 +79,7 @@ const FormMap = ({
                     )}
                 </Col>
             </Row>
-        </Forms>
+        </Style>
     );
 };
 

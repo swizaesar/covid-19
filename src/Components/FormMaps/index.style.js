@@ -4,8 +4,7 @@ const Style = styled.div`
     width: 100%;
     display: block;
     position: relative;
-    height: 450px;
-    margin-bottom: 15px;
+    height: 350px;
     .google-maps {
         &--search-box {
             position: absolute;
