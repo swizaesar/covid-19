@@ -1,28 +1,33 @@
 import React from "react";
-import { Card, CardBody, Col, Container, Jumbotron, Row } from "reactstrap";
+import { Card, CardBody, Col, Row } from "reactstrap";
 import styled from "styled-components";
-import Background from "../Assets/Images/background.jpeg";
-
-const JumbotronStyle = styled(Jumbotron)`
-    background: url(${Background});
-    background-size: cover;
-    background-repeat: no-repeat;
-    min-height: 450px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: unset;
-    margin-bottom: 30px;
+import Maps from "../Maps";
+const SectionStyle = styled(Card)`
+    text-align: left;
+    font-size: 14px;
+    .title {
+        font-size: 16px;
+    }
     .card {
         margin-bottom: 30px;
         border-radius: 20px;
     }
 `;
-
-const JumbotronCustom = () => {
+const Section = () => {
+    const handlerGetLocation = (locationValue, e) => {
+        console.log("location", locationValue);
+    };
     return (
-        <JumbotronStyle>
-            <Container>
+        <SectionStyle>
+            <CardBody>
+                <div>
+                    <Maps
+                        onGetValue={(locationValue, e) =>
+                            handlerGetLocation(locationValue, e)
+                        }
+                        label="Location Maps"
+                    ></Maps>
+                </div>
                 <Row>
                     <Col xl={4} md={4} sm={4}>
                         <Card>
@@ -40,8 +45,8 @@ const JumbotronCustom = () => {
                         </Card>
                     </Col>
                 </Row>
-            </Container>
-        </JumbotronStyle>
+            </CardBody>
+        </SectionStyle>
     );
 };
-export default JumbotronCustom;
+export default Section;
