@@ -100,20 +100,6 @@ const ReactGoogleMaps = withScriptjs(
                 ref={mapsElement}
                 defaultZoom={props.zoom}
                 defaultCenter={defaultLocation}
-                // options={{
-                //     fullscreenControl: false,
-                //     mapTypeControl: false,
-                //     styles: [
-                //         {
-                //             stylers: [
-                //                 { saturation: -100 },
-                //                 { gamma: 0.8 },
-                //                 { lightness: 4 },
-                //                 { visibility: "on" },
-                //             ],
-                //         },
-                //     ],
-                // }}
                 yesIWantToUseGoogleMapApiInternals
             >
                 <Marker
@@ -129,13 +115,6 @@ const ReactGoogleMaps = withScriptjs(
                         </InfoWindow>
                     )}
                 </Marker>
-                {/* <button
-                    type="button"
-                    className="btn btn-primary btn-current-location"
-                    onClick={() => onGetCurrentLocation(true)}
-                >
-                    <i className="fa-4 fa-map-marker"></i>
-                </button> */}
                 <div className="search-box-google">
                     <StandaloneSearchBox
                         ref={searchBox}

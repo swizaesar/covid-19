@@ -2,7 +2,7 @@ import React from "react";
 import { Card, CardBody, Col, Container, Jumbotron, Row } from "reactstrap";
 import styled from "styled-components";
 import Background from "../Assets/Images/background.jpeg";
-
+import { formatNumber } from "../../Utils/NumberConverter";
 const JumbotronStyle = styled(Jumbotron)`
     background: url(${Background});
     background-size: cover;
@@ -19,26 +19,36 @@ const JumbotronStyle = styled(Jumbotron)`
     }
 `;
 
-const JumbotronCustom = () => {
+const JumbotronCustom = ({ data = false }) => {
     return (
         <JumbotronStyle>
             <Container>
                 <Row>
-                    <Col xl={4} md={4} sm={4}>
-                        <Card>
-                            <CardBody></CardBody>
-                        </Card>
-                    </Col>
-                    <Col xl={4} md={4} sm={4}>
-                        <Card>
-                            <CardBody></CardBody>
-                        </Card>
-                    </Col>
-                    <Col xl={4} md={4} sm={4}>
-                        <Card>
-                            <CardBody></CardBody>
-                        </Card>
-                    </Col>
+                    {data && (
+                        <React.Fragment>
+                            <Col xl={4} md={4} sm={4}>
+                                <Card>
+                                    <CardBody>
+                                        {formatNumber(data.confirmed)}
+                                    </CardBody>
+                                </Card>
+                            </Col>
+                            <Col xl={4} md={4} sm={4}>
+                                <Card>
+                                    <CardBody>
+                                        {formatNumber(data.critical)}
+                                    </CardBody>
+                                </Card>
+                            </Col>
+                            <Col xl={4} md={4} sm={4}>
+                                <Card>
+                                    <CardBody>
+                                        {formatNumber(data.deaths)}
+                                    </CardBody>
+                                </Card>
+                            </Col>
+                        </React.Fragment>
+                    )}
                 </Row>
             </Container>
         </JumbotronStyle>

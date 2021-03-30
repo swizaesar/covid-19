@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardBody } from "reactstrap";
+import { Card, CardBody, Input } from "reactstrap";
 import styled from "styled-components";
 const SidebarStyle = styled(Card)`
     text-align: left;
@@ -14,16 +14,39 @@ const SidebarStyle = styled(Card)`
         }
     }
 `;
-const Sidebar = () => {
+const Sidebar = ({
+    data = false,
+    handleViewCountry = () => {},
+    handleSearchCountry = () => {},
+}) => {
     return (
         <SidebarStyle>
             <CardBody>
-                <button type="button" className="btn btn-country">
-                    America
-                </button>
-                <button type="button" className="btn btn-country">
-                    Australia
-                </button>
+                <div style={{ maxHeight: 500, overflow: "auto" }}>
+                    {data && (
+                        <React.Fragment>
+                            <Input
+                                type="text"
+                                placeholder="Search..."
+                                onChange={({ target: { value } }) =>
+                                    handleSearchCountry(value)
+                                }
+                            />
+                            {data.map((item, key) => {
+                                return (
+                                    <button
+                                        onClick={() => handleViewCountry(item)}
+                                        key={key}
+                                        type="button"
+                                        className="btn btn-country"
+                                    >
+                                        {item.name}
+                                    </button>
+                                );
+                            })}
+                        </React.Fragment>
+                    )}
+                </div>
             </CardBody>
         </SidebarStyle>
     );
