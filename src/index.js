@@ -4,11 +4,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { StoreProvider } from "./Reducers";
 
 ReactDOM.render(
-    <React.StrictMode>
+    <StoreProvider>
         <App />
-    </React.StrictMode>,
+    </StoreProvider>,
     document.getElementById("root")
 );
 

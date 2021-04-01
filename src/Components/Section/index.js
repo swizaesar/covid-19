@@ -1,34 +1,47 @@
 import React from "react";
-import { Card, CardBody, Col, Container, Jumbotron, Row } from "reactstrap";
+import { Card, CardBody, Col, Row } from "reactstrap";
 import styled from "styled-components";
-import SkeletonLoading from "../Skeleton";
 import { formatNumber } from "../../Utils/NumberConverter";
-
-const JumbotronStyle = styled(Jumbotron)`
-    background: #2947a1;
-    min-height: 450px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: unset;
-    margin-bottom: 30px;
+import Maps from "../Maps";
+import SkeletonLoading from "../Skeleton";
+const SectionStyle = styled(Card)`
+    text-align: left;
+    font-size: 14px;
+    box-shadow: 0px 6px 30px 5px rgba(0, 0, 0, 0.1);
+    .title {
+        font-size: 16px;
+    }
     .card {
+        margin-bottom: 30px;
         border-radius: 20px;
-        font-size: 24px;
         font-weight: bold;
         text-align: center;
-        box-shadow: 0px 6px 30px 5px rgba(0, 0, 0, 0.1);
-
         .fa-user-friends {
             margin-right: 15px;
         }
     }
 `;
-
-const JumbotronCustom = ({ data = false }) => {
+const Section = ({
+    labelMaps = "",
+    data,
+    location = {},
+    markerElement = () => {},
+    onReCenterMaps = () => {},
+    mapsElement = () => {},
+}) => {
     return (
-        <JumbotronStyle>
-            <Container>
+        <SectionStyle>
+            <CardBody>
+                <div>
+                    <Maps
+                        markerElement={markerElement}
+                        labelMaps={labelMaps}
+                        mapsElement={mapsElement}
+                        onReCenterMaps={onReCenterMaps}
+                        location={location}
+                        label="Location Maps"
+                    ></Maps>
+                </div>
                 <Row>
                     {data ? (
                         <React.Fragment>
@@ -63,19 +76,19 @@ const JumbotronCustom = ({ data = false }) => {
                     ) : (
                         <React.Fragment>
                             <Col xl={4} md={4} sm={4}>
-                                <SkeletonLoading width="100%" height="100px" />
+                                <SkeletonLoading width="100%" height="70px" />
                             </Col>
                             <Col xl={4} md={4} sm={4}>
-                                <SkeletonLoading width="100%" height="100px" />
+                                <SkeletonLoading width="100%" height="70px" />
                             </Col>
                             <Col xl={4} md={4} sm={4}>
-                                <SkeletonLoading width="100%" height="100px" />
+                                <SkeletonLoading width="100%" height="70px" />
                             </Col>
                         </React.Fragment>
                     )}
                 </Row>
-            </Container>
-        </JumbotronStyle>
+            </CardBody>
+        </SectionStyle>
     );
 };
-export default JumbotronCustom;
+export default Section;
