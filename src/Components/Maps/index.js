@@ -18,7 +18,7 @@ const Maps = ({
             onReCenterMaps={onReCenterMaps}
             zoom={6}
             location={location}
-            googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-ugQsR1edhcQ34i5Rbs64WEfsuCNInDo&v=3.exp&libraries=geometry,drawing,places"
+            googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7kC4xDnxLc35ydrmkjnzhH4zi3kG9IkI&v=3.exp&libraries=geometry,drawing,places"
             loadingElement={<div style={{ height: `100%` }} />}
             containerElement={
                 <Style
