@@ -17,13 +17,40 @@ const service = {
                     },
                     text: "Success Get Ingredients",
                 },
-                401: {
+                400: {
                     mode: {
                         use: "alert",
                         type: "danger",
                         timeOut: 3000,
                     },
-                    text: "",
+                    text: "Terjadi kesalahan, harap mencoba beberapa saat lagi",
+                },
+            },
+        });
+    },
+    getCountryClear: ({ dispatch }) => {
+        servicesAction(dispatch).reduxClear({
+            reducer: "service",
+            group: "country",
+            key: "countries",
+            type: "CLEAR",
+        });
+    },
+    getLatestTotal: ({ dispatch }) => {
+        servicesAction(dispatch).reduxFetch({
+            url: "/totals",
+            method: "GET",
+            reducer: "service",
+            group: "country",
+            key: "getLatestTotal",
+            message: {
+                200: {
+                    mode: {
+                        use: "alert",
+                        type: "success",
+                        timeOut: 3000,
+                    },
+                    text: "Success Get Ingredients",
                 },
                 400: {
                     mode: {
@@ -34,6 +61,14 @@ const service = {
                     text: "Terjadi kesalahan, harap mencoba beberapa saat lagi",
                 },
             },
+        });
+    },
+    getLatestTotalClear: ({ dispatch }) => {
+        servicesAction(dispatch).reduxClear({
+            reducer: "service",
+            group: "country",
+            key: "getLatestTotal",
+            type: "CLEAR",
         });
     },
     getCountryByName: ({ dispatch, params }) => {
@@ -54,14 +89,6 @@ const service = {
                     },
                     text: "Success Get Ingredients",
                 },
-                401: {
-                    mode: {
-                        use: "alert",
-                        type: "danger",
-                        timeOut: 3000,
-                    },
-                    text: "",
-                },
                 400: {
                     mode: {
                         use: "alert",
@@ -71,6 +98,14 @@ const service = {
                     text: "Terjadi kesalahan, harap mencoba beberapa saat lagi",
                 },
             },
+        });
+    },
+    getCountryByNameClear: ({ dispatch }) => {
+        servicesAction(dispatch).reduxClear({
+            reducer: "service",
+            group: "country",
+            key: "countryName",
+            type: "CLEAR",
         });
     },
 };

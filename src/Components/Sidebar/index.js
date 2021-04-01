@@ -1,23 +1,34 @@
 import React from "react";
-import { Card, CardBody, Input } from "reactstrap";
+import { Card, CardBody } from "reactstrap";
 import styled from "styled-components";
 const SidebarStyle = styled(Card)`
     text-align: left;
     font-size: 14px;
-
+    box-shadow: 0px 6px 30px 5px rgba(0, 0, 0, 0.1);
     .btn {
         &-country {
             display: block;
             padding-left: 0;
             width: 100%;
             text-align: left;
+            transition: all 0.25s ease;
+        }
+        &.active {
+            padding-left: 10px;
+            background: #2947a2;
+            color: #fff;
+            transition: all 0.25s ease;
+        }
+        &:focus {
+            outline: unset;
+            box-shadow: unset;
         }
     }
 `;
 const Sidebar = ({
     data = false,
     handleViewCountry = () => {},
-    handleSearchCountry = () => {},
+    isActive = "Indonesia",
 }) => {
     return (
         <SidebarStyle>
@@ -25,20 +36,17 @@ const Sidebar = ({
                 <div style={{ maxHeight: 500, overflow: "auto" }}>
                     {data && (
                         <React.Fragment>
-                            <Input
-                                type="text"
-                                placeholder="Search..."
-                                onChange={({ target: { value } }) =>
-                                    handleSearchCountry(value)
-                                }
-                            />
                             {data.map((item, key) => {
                                 return (
                                     <button
                                         onClick={() => handleViewCountry(item)}
                                         key={key}
                                         type="button"
-                                        className="btn btn-country"
+                                        className={`btn btn-country ${
+                                            isActive === item.name
+                                                ? "active"
+                                                : ""
+                                        }`}
                                     >
                                         {item.name}
                                     </button>
